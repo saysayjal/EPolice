@@ -10,7 +10,8 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var homeRouter = require('./routes/home');
-
+var reportRouter = require('./routes/report');
+var emergencynumberRouter = require('./routes/emergencynumber');
 
 
 var app = express();
@@ -33,9 +34,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login', loginRouter)
-
-app.use('/home', homeRouter)
+app.use('/login', loginRouter);
+app.use('/home', homeRouter);
+app.use('/report', reportRouter);
+app.use('/emergencynumber', emergencynumberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
