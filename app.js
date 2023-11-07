@@ -10,6 +10,8 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var homeRouter = require('./routes/home');
+var emergencynumberRouter = require('./routes/emergencynumber');
+var reportRouter = require('./routes/report');
 
 
 
@@ -34,6 +36,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter)
+app.use('/signup', signupRouter)
+app.use('/emergencynumber', emergencynumberRouter)
+app.use('/report', reportRouter)
+
 
 app.use('/home', homeRouter)
 

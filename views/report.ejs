@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Incident</title>
+    <link rel="stylesheet" type="text/css" href="report.css">
+</head>
+<body>
+    <h1>Report Incident</h1>
+    <form action="/submit-incident" method="POST" enctype="multipart/form-data">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="6" required></textarea>
+        <label for="media">Upload Photo/Video (optional):</label>
+        <input type="file" id="media" name="media">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
