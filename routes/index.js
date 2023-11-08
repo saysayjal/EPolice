@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+const Report = require('../models/report'); 
 
 
 
@@ -20,6 +21,11 @@ router.get('/home', function(req, res, next) {
 
 router.get('/report', function(req, res, next) {
   res.render('report', { title: 'Express' });
+});
+
+router.get('/admin', async(req, res, next)=> {
+  const reports = await Report.find();
+  res.render('admin', { title: 'Express', reportsList: reports });
 });
 
 router.post('/signup',async (req, res) => {
@@ -52,7 +58,11 @@ router.post('/login',async (req, res) => {
   }
 });
 
-/*router.post('/report',async (req, res) => {
+//report.ejs
+
+
+
+router.post('/report',async (req, res) => {
   // Handle the form submission and save user data to the database
   console.log(req.body);
   const newReport =  new Report({
@@ -60,9 +70,12 @@ router.post('/login',async (req, res) => {
     
   })
   await Report.insertMany([newReport])
-  res.send("Report submitted");
   res.render('home');
-});*/
+});
 
 
+
+  
 module.exports = router;
+
+
