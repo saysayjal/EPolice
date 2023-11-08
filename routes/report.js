@@ -1,24 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const Report = require('../models/report'); // Import your Mongoose model for reports
-
-
-// Handle form submission to store data in the database
-router.post('/submit', (req, res) => {
-    const { dataToStore } = req.body.description; // Extract data from the form
-
-    // Create a new report and save it to the database
-    const report = new Report({ dataToStore });
-    report.save()
-        .then(() => {
-        
-            res.redirect('/home'); // Redirect to the "report" page or another page as needed
-        })
-        .catch(err => {
-            // Handle the error appropriately
-            console.error(err);
-            res.status(500).send('Error storing data.');
-        });
-});
-
-module.exports = router;
+var express = require('express');
+var router = express.Router();
+const Report = require('../models/report');
+router.get('/report', function(req, res, next) {
+    res.render('report', { title: 'Express' });
+  });
+router.post('/report',async (req, res) => {
+    // Handle the form submission and save user data to the database
+    console.log(req.body);
+    const newReport =  new Report({
+      description: req.body.description,
+    })
+    await Report.insertMany([newReport])
+    res.send("Report submitted");
+    res.render('home');
+  });
+  module.exports = router;
