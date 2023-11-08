@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ePolice - Home</title>
-    <link rel="stylesheet" href="stylesheets/homepage.css">
-</head>
-<body> <header>
-    <div class="header-content">
-        <img src="public/images/nepalflag.png" alt="Nepal Flag">
+    <link rel="stylesheet" href="stylesheets/homepage.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="/images/nepalflag.png" alt="Nepal Flag" />
         <h1>ePolice</h1>
         <nav>
-            <ul>
-                <li><a href="/">Home <img src="public/images/home.png" alt="Home"></a></li>
-                <li><a href="/notifications">Notifications <img src="public/images/notification.png" alt="Notifications"></a></li>
-                <li><a href="/profile">User <img src="public/images/user.png" alt="User"></a></li>
-            </ul>
+          <ul>
+            <li>
+              <a href="/">Home <img src="/images/home.png" alt="Home" /></a>
+            </li>
+            <li>
+              <a href="/notifications"
+                >Notifications
+                <img src="/images/notification.png" alt="Notifications"
+              /></a>
+            </li>
+            <li>
+              <a href="/profile"
+                >User <img src="/images/user.png" alt="User"
+              /></a>
+            </li>
+          </ul>
         </nav>
-    </div>
-</header>
+      </div>
+    </header>
     <div class="container">
-        
-        <div class="report-incident">
-            <h2>Report an Incident</h2>
-            <p>If you have witnessed or experienced an incident, please report it here.</p>
-            <a href="/report" class="btn-report">Report Incident</a>
-        </div>
-        <div class="emergency-numbers">
-            <h2>Emergency Numbers</h2>
-            <p>Quickly access emergency services in Nepal.</p>
-            <a href="/emergencynumber" class="btn-emergency">Emergency Numbers</a>
-        </div>
-        
-        <div class="nearest-police">
-            <h2>Nearest police station</h2>
-            <p>Search for your  nearby police station.</p>
-            <a href="emergencynumber.ejs" class="btn-police">Find</a>
-        </div>
+      <div class="interactive-cards">
+        <h2>Report an Incident</h2>
+        <p>
+          If you have witnessed or experienced an incident, please report it
+          here.
+        </p>
+        <a href="/report" class="btn-report">Report Incident</a>
+      </div>
+      <div class="interactive-cards">
+        <h2>Emergency Numbers</h2>
+        <p>Quickly access emergency services in Nepal.</p>
+        <a href="/emergencynumber" class="btn-emergency">Emergency Numbers</a>
+      </div>
 
+      <div class="interactive-cards">
+        <h2>Nearest police station</h2>
+        <p>Search for your nearby police station.</p>
+        <a href="emergencynumber.ejs" class="btn-police">Find</a>
+      </div>
     </div>
-</body>
+  </body>
 </html>
-
-
-
-

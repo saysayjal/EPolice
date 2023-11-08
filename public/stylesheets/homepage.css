@@ -1,74 +1,107 @@
 body,
 html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #F2F2F2;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Nunito;
+  background: #f2f2f2;
+}
+.header-content {
+  display: flex;
+  background-color: #1f55eb;
+  justify-content: space-between;
+  vertical-align: center;
+  text-align: center;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  vertical-align: center;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
 }
 
 h1 {
-    font-size: 40px;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.report-incident,
-.emergency-numbers,
-.nearest-police {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    max-width: 400px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+.interactive-cards {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  max-width: 400px;
+  flex: 1;
+  min-height: 200px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
 }
 
-.report-incident:hover,
-.emergency-numbers:hover,
-.nearest-police:hover {
-    transform: scale(1.03);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+.interactive-cards:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-    font-size: 28px;
-    color: #007BFF;
-    margin-bottom: 15px;
+  font-size: 28px;
+  color: #007bff;
+  margin-bottom: 15px;
 }
 
 p {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 20px;
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 20px;
 }
 
 .btn-report,
 .btn-emergency,
 .btn-police {
-    font-size: 20px;
-    color: #fff;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    text-decoration: none;
-    cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-report:hover,
-.btn-emergency:hover ,
-.btn-police:hover{
-    background-color: #0056B3;
+.btn-emergency:hover,
+.btn-police:hover {
+  background-color: #0056b3;
+}
+
+img {
+  display: inline-block;
+  border-radius: 10%;
+  padding-top: 20px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
 }
