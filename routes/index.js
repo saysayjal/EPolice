@@ -13,6 +13,10 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
+router.get('/home', function(req, res, next) {
+  res.render('home', { title: 'Express' });
+});
+
 
 router.post('/signup',async (req, res) => {
   // Handle the form submission and save user data to the database
@@ -23,7 +27,7 @@ router.post('/signup',async (req, res) => {
     password: req.body.password,
   })
   await User.insertMany([newUser])
-  res.render(home);
+  res.redirect(home);
 });
 
 
@@ -42,6 +46,7 @@ router.post('/login',async (req, res) => {
     res.status(400).send("TRY AGAIN")
   }
 });
+
 
 
 module.exports = router;
