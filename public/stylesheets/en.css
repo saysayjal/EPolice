@@ -46,3 +46,8 @@ a {
     text-decoration: none;
     color: #007BFF; /* Blue link color */
 }
+
+.emergency-service a::after {
+    content: "\260E"; /* Unicode character for the phone icon */
+    margin-left: 500px; /* Add some space between the number and the icon */
+}
