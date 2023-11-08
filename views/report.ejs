@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Report Incident</h1>
-    <form action="/submit-incident" method="POST" enctype="multipart/form-data">
+    <form action="/submit" method="post" enctype="multipart/form-data">
         <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="6" required></textarea><br>
+        <input type="text" id="description" name="description" required><br>        
         <label for="media">Upload Photo/Video (optional):</label>
         <input type="file" id="media" name="media"><br>
         <button type="submit">Submit</button>
