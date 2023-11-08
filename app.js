@@ -9,7 +9,7 @@ var bodyParser=require("body-parser");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var reportRouter = require('./routes/report');
+// var reportRouter = require('./routes/report');
 var emergencynumberRouter = require('./routes/emergencynumber');
 var adminRouter = require('./routes/admin');
 
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/report', reportRouter);
+// app.use('/report', reportRouter);
 app.use('/emergencynumber', emergencynumberRouter);
 app.use('/admin', adminRouter);
 
