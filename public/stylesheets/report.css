@@ -1,16 +1,55 @@
 
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Nunito;
+  background: #f2f2f2;
+  background-image: url("https:source.unsplash.com/blue-bmw-car-in-a-dark-room-ffH_GkINfyY");
 }
 
 h1 {
     text-align: center;
     margin-top: 20px;
-    color: #333;
+    color: white;
+    margin-left: 120px;
+}
+
+h2{
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+}
+
+.header-content {
+    display: flex;
+    background-color: #1f55eb;
+    justify-content: space-between;
+    vertical-align: center;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.header-content img {
+    margin-left: 30px; 
+    width: 40px; 
+    height: 40px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+li {
+    display: inline;
+    vertical-align: center;
+    justify-content: center;
 }
 
 form {
@@ -70,4 +109,11 @@ input[type="file"] + label {
 /* Additional styling for the file input (optional) */
 input[type="file"] {
     display: none;
+}
+input[type="text-area"],
+input[type="file"] {
+    width: 90%; 
+    min-height:100px;
+    padding: 30px; 
+    margin-bottom: 10px; 
 }

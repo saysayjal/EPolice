@@ -86,9 +86,5 @@ router.post('/report',async (req, res) => {
   res.render('home');
 });
 
-
-
   
 module.exports = router;
-
-

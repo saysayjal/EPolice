@@ -3,13 +3,26 @@
 <html>
 <head>
     <title>Report List</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/admin.css">
 </head>
 <body>
     <h1>ReportsList</h1>
-    <ul>
+    <table width="60%">
+        <tr>
+          <th>Description</th>
+          <th>Verified</th>
+          <th>Handled</th>
+
+        </tr>
         <% reportsList.forEach(reports => { %>
-            <li><%= reports.description %></li>
+        <tr>
+            
+                <td><%= reports.description %></td>
+                <td><input type="checkbox"/></td>
+                <td><input type="checkbox"/></td>
+        </tr>
         <% }); %>
-    </ul>
+      </table>
+
 </body>
 </html>
