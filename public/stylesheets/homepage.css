@@ -100,10 +100,14 @@ p {
   cursor: pointer;
 }
 
-.btn-report:hover,
-.btn-emergency:hover,
-.btn-police:hover {
+.btn-report:hover{
   background-color: #0056b3;
+}
+.btn-emergency:hover{
+  background-color:red;
+}
+.btn-police:hover {
+  background-color: green;
 }
 
 img {
