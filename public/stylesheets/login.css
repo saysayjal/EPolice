@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", "sans-serif";
+    box-sizing: border-box;
+  }
+  
+  .container {
+    width: 50%;
+    padding-left: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 100%;
+  }
+  
+  form input.submit {
+    width: 100px;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    background-image: url("https:source.unsplash.com/blue-bmw-car-in-a-dark-room-ffH_GkINfyY");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .inputfield {
+    background: #1f55eb;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 5%;
+  }
+  
+  h1 {
+    color: #fff;
+    justify-content: center;
+  }
+  
+  form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  form input {
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  
+  input[type="email"],
+  input[type="password"]
+ {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="submit"] {
+    background-color: #00ff51;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #00b342;
+  }
+  
+  .form-group {
+    margin: 10px 0;
+  }
+
