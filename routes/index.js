@@ -10,22 +10,30 @@ router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Express' });
 });
 
-
+//get login page
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
+//get home page
 router.get('/home', function(req, res, next) {
   res.render('home', { title: 'Express' });
 });
 
+//get report page
 router.get('/report', function(req, res, next) {
   res.render('report', { title: 'Express' });
 });
 
+//get admin page
 router.get('/admin', async(req, res, next)=> {
   const reports = await Report.find();
   res.render('admin', { title: 'Express', reportsList: reports });
+});
+
+//get map page
+router.get('/map', function(req, res, next) {
+  res.render('map', { title: 'Express' });
 });
 
 router.post('/signup',async (req, res) => {
@@ -43,19 +51,24 @@ router.post('/signup',async (req, res) => {
 
 
 //for login
-router.post('/login',async (req, res) => {
-  try{
-   const check = await User.findOne({email:req.body.email})
-    if(check.password==req.body.password){
-      res.send("login successful")
-    }
-    else{
-      res.send("invalid password")
-    }
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+      const user = await User.findOne({ email });
+
+      if (user && user.comparePassword(password)) {
+          // Password matches
+          res.render('home'); // Redirect to the next page on successful login
+      } else {
+          // Password doesn't match or user not found
+          res.render('login', { error: 'Invalid email or password. Please try again.' });
+      }
+  } catch (err) {
+      console.error(err);
+      
   }
-  catch{
-    res.status(400).send("TRY AGAIN")
-  }
+  res.render('home');
 });
 
 //report.ejs
