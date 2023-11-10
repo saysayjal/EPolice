@@ -14,7 +14,7 @@
           <nav>
             <ul>
               <li>
-                <a href="home.ejs"><img src="/images/home.png" alt="Home" /></a>
+                <a href="/home"><img src="/images/home.png" alt="Home" /></a>
               </li>
               <li>
                 <a href="/notifications"
@@ -23,7 +23,7 @@
                 /></a>
               </li>
               <li>
-                <a href="/profile"
+                <a href="/user"
                   ><img src="/images/user.png" alt="User"
                 /></a>
               </li>
@@ -34,11 +34,11 @@
     <h2>Report Incident</h2>
     <form action="/report" method="post">
         <label for="description">Description:</label>
-        <input type="text-area" id="description" name="description" required />
-        <label for="media">Upload Photo/Video (optional):</label>
+        <textarea id="description" name="description" required ></textarea><br><br>
+        <label for="media">Upload Photo/Video (optional):</label><br>
         <input type="file" id="media" name="media" />
 
-        <input type="submit" class="submit" value="submit" />
+        <input type="Submit" class="submit" value="Submit" />
       
     </form>
     

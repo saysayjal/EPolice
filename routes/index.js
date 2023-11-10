@@ -36,6 +36,11 @@ router.get('/map', function(req, res, next) {
   res.render('map', { title: 'Express' });
 });
 
+//get user page
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'Express' });
+});
+
 router.post('/signup',async (req, res) => {
   // Handle the form submission and save user data to the database
   //console.log("jyoti");
@@ -86,5 +91,18 @@ router.post('/report',async (req, res) => {
   res.render('home');
 });
 
+router.post('/submit/:reportId',async (req, res) => {
+  if(req.body.verified=='on'){
+    await Report.findByIdAndUpdate(req.params.reportId, {
+      'verified':true
+    });
+  }
+  if(req.body.handled=='on'){
+    await Report.findByIdAndUpdate(req.params.reportId, {
+      'handled':true
+    });
+  }
+  res.redirect('/admin');
+});
   
 module.exports = router;
