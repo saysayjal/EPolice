@@ -1,28 +1,43 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Report List</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/admin.css">
 </head>
+
 <body>
-    <h1>ReportsList</h1>
+    <h1>Reports List</h1>
+
     <table width="60%">
         <tr>
-          <th>Description</th>
-          <th>Verified</th>
-          <th>Handled</th>
-
+            <th>Description</th>
+            <th>Verified</th>
+            <th>Handled</th>
         </tr>
+
         <% reportsList.forEach(reports => { %>
-        <tr>
-            
+        <form action="/submit/<%= reports.id %>" method="post">
+            <tr>
                 <td><%= reports.description %></td>
-                <td><input type="checkbox"/></td>
-                <td><input type="checkbox"/></td>
-        </tr>
+                <td>
+                  <input type="checkbox" name="verified" <% if (reports.verified) { %>checked disabled<% } %> >
+                    &nbsp;
+                    <% if(!reports.verified){ %>
+                    <button type="submit">Verify</button>
+                    <% } %>
+                </td>
+                <td>
+                  <input type="checkbox" name="handled" <% if (reports.handled) { %>checked disabled<% } %> >
+                    &nbsp;
+                    <% if(!reports.handled){ %>
+                    <button type="submit">Handle</button>
+                    <% } %>
+                </td>
+            </tr>
+        </form>
         <% }); %>
-      </table>
-
+    </table>
 </body>
+
 </html>
