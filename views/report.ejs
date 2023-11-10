@@ -23,7 +23,7 @@
                 /></a>
               </li>
               <li>
-                <a href="/profile"
+                <a href="/user"
                   ><img src="/images/user.png" alt="User"
                 /></a>
               </li>
@@ -34,11 +34,11 @@
     <h2>Report Incident</h2>
     <form action="/report" method="post">
         <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" cols="50"></textarea>  <br>
-        <label for="media">Upload Photo/Video (optional):</label>
+        <textarea id="description" name="description" required ></textarea><br><br>
+        <label for="media">Upload Photo/Video (optional):</label><br>
         <input type="file" id="media" name="media" />
 
-        <input type="submit" class="submit" value="submit" />
+        <input type="Submit" class="submit" value="Submit" />
       
     </form>
     
