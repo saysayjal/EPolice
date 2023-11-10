@@ -5,6 +5,7 @@ const Report = require('../models/report');
 
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Express' });
@@ -25,6 +26,10 @@ router.get('/report', function(req, res, next) {
   res.render('report', { title: 'Express' });
 });
 
+
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'Express' });
+});
 //get admin page
 router.get('/admin', async(req, res, next)=> {
   const reports = await Report.find();
@@ -42,16 +47,14 @@ router.get('/user', function(req, res, next) {
 });
 
 router.post('/signup',async (req, res) => {
-  // Handle the form submission and save user data to the database
-  //console.log("jyoti");
   const newUser =  new User({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    usertype:req.body.usertype
+    
   })
   await User.insertMany([newUser])
-  res.render("home");
+  res.redirect("home");
 });
 
 
@@ -91,6 +94,8 @@ router.post('/report',async (req, res) => {
   res.render('home');
 });
 
+
+
 router.post('/submit/:reportId',async (req, res) => {
   if(req.body.verified=='on'){
     await Report.findByIdAndUpdate(req.params.reportId, {
@@ -103,6 +108,10 @@ router.post('/submit/:reportId',async (req, res) => {
     });
   }
   res.redirect('/admin');
+
 });
+
+
+
   
 module.exports = router;

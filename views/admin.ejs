@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Report List</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/admin.css">
 </head>
+
 <body>
     <h1>Reports List</h1>
     <table width="60%">
@@ -13,6 +14,7 @@
             <th>Verified</th>
             <th>Handled</th>
         </tr>
+
         <% reportsList.forEach(reports => { %>
         <form action="/submit/<%= reports.id %>" method="post">
             <tr>
@@ -22,20 +24,25 @@
                     &nbsp;
                     <% if(!reports.verified){ %>
                     <button type="submit">Verify</button>
-                    <% } %>
+                    <% } else{%>
+                        <span class="status">Verified</span>
+                     <% } %>
                 </td>
                 <td>
                   <input type="checkbox" name="handled" <% if (reports.handled) { %>checked disabled<% } %> >
                     &nbsp;
                     <% if(!reports.handled){ %>
                     <button type="submit">Handle</button>
-                    <% } %>
+                    <% } else{%>
+                        <span class="status">Handled</span>
+                     <% } %>    
                 </td>
             </tr>
         </form>
         <% }); %>
     </table>
 </body>
+
 </html>
 
 
