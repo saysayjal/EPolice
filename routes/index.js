@@ -47,8 +47,6 @@ router.get('/user', function(req, res, next) {
 });
 
 router.post('/signup',async (req, res) => {
-  // Handle the form submission and save user data to the database
-  //console.log("jyoti");
   const newUser =  new User({
     username: req.body.username,
     email: req.body.email,
@@ -56,8 +54,7 @@ router.post('/signup',async (req, res) => {
     
   })
   await User.insertMany([newUser])
-  
-  res.render("home");
+  res.redirect("home");
 });
 
 

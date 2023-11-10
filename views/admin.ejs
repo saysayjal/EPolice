@@ -24,14 +24,18 @@
                     &nbsp;
                     <% if(!reports.verified){ %>
                     <button type="submit">Verify</button>
-                    <% } %>
+                    <% } else{%>
+                        <span class="status">Verified</span>
+                     <% } %>
                 </td>
                 <td>
                   <input type="checkbox" name="handled" <% if (reports.handled) { %>checked disabled<% } %> >
                     &nbsp;
                     <% if(!reports.handled){ %>
                     <button type="submit">Handle</button>
-                    <% } %>
+                    <% } else{%>
+                        <span class="status">Handled</span>
+                     <% } %>    
                 </td>
             </tr>
         </form>
