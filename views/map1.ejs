@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="stylesheets/map.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+  <h2>Nearby Hospital</h2>
+  <div id="map" class="map"></div>
+  <script>
+    var map = L.map('map');
+    map.setView([28.3949, 84.1240], 2);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map1);
+    const hospital = [
+      { name: 'Bir hospital', lat: 27.7048, lng: 85.3137 },
+      { name: 'Teaching hospital', lat:27.7360, lng: 85.3303 },
+      { name: 'Mediciti Hospital', lat: 27.6623, lng: 85.3031 },
+      { name: 'B&B hospital', lat: 27.6649, lng: 85.3293 },
+      { name: 'Norvic hospital', lat: 27.6899, lng:85.3192 },
+      { name: 'Civil Hospital', lat: 27.6863, lng:85.3388 },
+      { name: 'Om hospital', lat: 27.7214, lng: 85.3448 },
+      { name: 'Grandi hospital', lat: 27.7529, lng: 85.3259 },
+      
+    ];
+
+    // Add markers for each police station
+    hospital.forEach(station => {
+      L.marker([station.lat, station.lng])
+        .addTo(map1)
+        .bindPopup(station.name);
+    });
+
+    navigator.geolocation.watchPosition(success, error);
+    let marker, circle, zoomed;
+
+    function success(loc) {
+      const lat = loc.coords.latitude;
+      const lng = loc.coords.longitude;
+      const accuracy = loc.coords.accuracy;
+      if (marker) {
+        map.removeLayer(marker);
+        map.removeLayer(circle);
+      }
+      marker = L.marker([lat, lng]).addTo(map);
+      circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+      if (!zoomed) {
+        zoomed = map.fitBounds(circle.getBounds());
+      }
+      map.setView([lat, lng], map.getZoom());
+      marker.bindPopup(`You are here`).openPopup();
+    }
+
+    function error(err) {
+      if (err.code == 1) {
+        alert("Please allow location access to use this feature");
+      } else {
+        alert("An error occurred: " + err.message);
+      }
+    }
+  </script>
+
+</body>
+
+</html>
