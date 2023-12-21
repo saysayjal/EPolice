@@ -6,17 +6,26 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser=require("body-parser");
+const session = require('express-session');
+const flash = require('connect-flash')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var emergencynumberRouter = require('./routes/emergencynumber');
-
+const reportRouter = require('./routes/report');
+const adminRouter = require('./routes/admin');
+const notificationRoutes = require('./routes/notification');
 
 var app = express();
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(session({
+  secret: 'mykey', // Change this to a secure secret
+  resave: false,
+  saveUninitialized: true,
+}));
 // parse application/json
 app.use(bodyParser.json());
 
@@ -29,11 +38,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals['error_msg'] = req.flash('error_msg');
+  res.locals['success_msg'] = req.flash('success_msg');
+  next();
+});
 
 app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/emergencynumber', emergencynumberRouter);
-
+app.use('/report', reportRouter);
+app.use('/admin', adminRouter);
+app.use('/notification', notificationRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
