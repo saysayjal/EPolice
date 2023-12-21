@@ -7,85 +7,43 @@
 </head>
 
 <body>
-  <h1>ReportsList</h1>
-  <table width="60%">
-    <tr>
-      <th>Description</th>
-      <th>Verified</th>
-      <th>Handled</th>
+    <h1>Reports List</h1>
+    <table width="60%">
+        <tr>
+            <th>Description</th>
+            <th>Verified</th>
+            <th>Handled</th>
+        </tr>
 
-    </tr>
-    <% reportsList.forEach(reports=> { %>
-      <tr>
-
-        <td>
-          <%= reports.description %>
-        </td>
-        <td><input type="checkbox" class="verification-checkbox" data-report-id="<%= reports._id %>"
-          <%= reports.status==='Approved' ? 'checked' : '' %>  />
-        </td>
-
-        <!-- <td><input type="checkbox"/></td> -->
-        <td><input type="checkbox" class="handling-checkbox" data-handle-id="<%= reports._id %>" 
-          <%= reports.status==='Handled' ? 'checked' : '' %>
-          /></td>
-      </tr>
-      <% }); %>
-  </table>
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const verificationCheckboxes = document.querySelectorAll('.verification-checkbox');
-      const handlingCheckboxes = document.querySelectorAll('.handling-checkbox');
-
-      verificationCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', async function () {
-          const reportId = this.getAttribute('data-report-id');
-
-          // Make an API call to update verification status
-          try {
-            const response = await fetch(`http://localhost:3000/admin/${reportId}/verify`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              // Include any additional data needed for the API call
-              body: JSON.stringify({ verified: this.checked }),
-            });
-            const data = await response.json();
-            // Handle the API response if needed
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      });
-
-      handlingCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', async function () {
-          const reportId = this.getAttribute('data-handle-id');
-console.log(reportId,'report id in admin handle');
-          // Make an API call to update handling status
-          try {
-            const response = await fetch(`/http://localhost:3000/admin/${reportId}/handled`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              // Include any additional data needed for the API call
-              body: JSON.stringify({ handled: this.checked }),
-            });
-
-            const data = await response.json();
-            // Handle the API response if needed
-            console.log(data);
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      });
-    });
-  </script>
+        <% reportsList.forEach(reports => { %>
+        <form action="/submit/<%= reports.id %>" method="post">
+            <tr>
+                <td><%= reports.description %></td>
+                <td>
+                  <input type="checkbox" name="verified" <% if (reports.verified) { %>checked disabled<% } %> >
+                    &nbsp;
+                    <% if(!reports.verified){ %>
+                    <button type="submit">Verify</button>
+                    <% } else{%>
+                        <span class="status">Verified</span>
+                     <% } %>
+                </td>
+                <td>
+                  <input type="checkbox" name="handled" <% if (reports.handled) { %>checked disabled<% } %> >
+                    &nbsp;
+                    <% if(!reports.handled){ %>
+                    <button type="submit">Handle</button>
+                    <% } else{%>
+                        <span class="status">Handled</span>
+                     <% } %>    
+                </td>
+            </tr>
+        </form>
+        <% }); %>
+    </table>
 </body>
 
 </html>
+
+
+

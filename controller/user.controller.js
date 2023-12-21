@@ -1,5 +1,6 @@
 var User = require("../models/user");
 const Notification = require("../models/notification");
+const Report = require("../models/report")
 const bcrypt = require("bcrypt");
 
 exports.createUser = async (req, res) => {
@@ -44,17 +45,25 @@ exports.auth = async (req, res) => {
       // Set user information in session
       req.session.user = { email: user.email, userId: user._id };
 
-      const unReadNotifications = await Notification.find({
+      const verifiedReport = await Report.find({
+        reported_by: user._id,
+        $or: [
+          { verified: true },
+          { handled: true }
+        ]
+      })
+      const reportIds = verifiedReport.map((el)=>el._id)
+
+       const verifiedNotifications = await Notification.find({
         user_id: user._id,
         is_read: false,
-        status: { $in: ["Approved", "Handled"] },
+        report_id: {$in: reportIds}
       })
       .populate('report_id')
       .exec();
-      const notificationIds = unReadNotifications.map((el)=>el._id)
-      req.session.user.notification = unReadNotifications;
+     const notificationIds = verifiedNotifications.map((el)=>el._id)
+      req.session.user.notification = verifiedNotifications;
       req.session.user.notificationIds = notificationIds;
-      console.log(req.session.user);
       // Redirect to the home page
       res.redirect("/home");
     } else {
@@ -64,24 +73,5 @@ exports.auth = async (req, res) => {
   } catch (error) {
     console.log(error.message)
   }
-
-  exports.getAllUser = async (req, res) => {
-    try {
-      const users = await User.find();
-      return res.json(users);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  exports.getUserById = async (req, res) => {
-    try {
-      const { userId } = req.params;
-      const user = await User.findById(userId);
-      return res.json(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
 };

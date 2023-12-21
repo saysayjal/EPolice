@@ -10,7 +10,7 @@ router.post('/update', async (req, res) => {
     // Assuming you have a method in your model to mark notifications as read
     await Notification.updateMany(
       { _id: { $in: notificationIds } },
-      { $set: { is_read: true } }
+      { $set: { is_read: true, status: 'Approved' } }
     );
 
     return res.json({ success: true, message: 'Notifications updated successfully' });

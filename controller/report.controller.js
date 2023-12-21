@@ -26,25 +26,3 @@ async function createNotificationForAdmin(report, user) {
     status: "Pending",
   });
 }
-
-exports.getReportById = async(req,res)=> {
-  try {
-    const {reportId}= req.params;
-    const report = await Report.findById(reportId);
-    return res.json(report)
-  } catch (error) {
-    throw error;
-  }
-}
-
-exports.getAllReportByUserId = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const reports = await Report.find({ reported_by: userId });
-    return res.json(reports);
-  } catch (error) {
-    throw error;
-  }
-};
-
-

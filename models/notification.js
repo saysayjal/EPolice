@@ -13,7 +13,6 @@ const notificationSchema = new mongoose.Schema(
         ref: "Report",
       },
     status: { type: String, enum: ["Approved","Handled", "Rejected", "Pending"] },
-    
     is_read: { type: Boolean, default: false },
   },
   { timestamps: true }

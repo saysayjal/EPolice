@@ -6,6 +6,7 @@ const userController = require('../controller/user.controller')
 
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Express' });
@@ -33,6 +34,10 @@ router.get('/report', function(req, res, next) {
   res.render('report', { title: 'Express' });
 });
 
+
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'Express' });
+});
 //get admin page
 router.get('/admin', async(req, res, next)=> {
   const reports = await Report.find();
@@ -57,6 +62,26 @@ router.post('/signup',userController.createUser)
 //   await User.insertMany([newUser])
 //   res.render("home");
 // });
+
+router.get('/hospital', function(req, res, next) {
+  res.render('map1', { title: 'Express' });
+});
+
+//get user page
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'Express' });
+});
+
+router.post('/signup',async (req, res) => {
+  const newUser =  new User({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    
+  })
+  await User.insertMany([newUser])
+  res.redirect("home");
+});
 
 
 //for login
@@ -96,4 +121,24 @@ router.post('/login', userController.auth)
 //   res.render('home');
 // });
 
+
+
+router.post('/submit/:reportId',async (req, res) => {
+  if(req.body.verified=='on'){
+    await Report.findByIdAndUpdate(req.params.reportId, {
+      'verified':true
+    });
+  }
+  if(req.body.handled=='on'){
+    await Report.findByIdAndUpdate(req.params.reportId, {
+      'handled':true
+    });
+  }
+  res.redirect('/admin');
+
+});
+
+
+
+  
 module.exports = router;

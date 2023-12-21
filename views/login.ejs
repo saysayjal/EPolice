@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title style="color: #007bff">Sign Up</title>
-    <link rel="stylesheet" href="stylesheets/login.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  </head>
-  <body>
-      <%- include('./error') %>
+<head>
+  <title style="color: #007bff">Sign Up</title>
+  <link rel="stylesheet" href="stylesheets/login.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+</head>
+
+<body>
+  <%- include('./error') %>
     <div class="container">
       <div class="inputfield">
         <h1>Login</h1>
@@ -19,10 +21,19 @@
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required />
 
+
+          <label for="usertype">User Type</label>
+          <select id="usertype" name="usertype" required>
+            <option value="common">Common</option>
+            <option value="police">Police</option>
+          </select><br><br>
+
           <input type="submit" class="submit" value="login" />
           <br />
+
         </form>
       </div>
     </div>
-  </body>
+</body>
+
 </html>

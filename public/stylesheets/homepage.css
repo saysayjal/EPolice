@@ -1,24 +1,26 @@
 body,
 html {
   height: 100%;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   font-family: Nunito;
   background: #f2f2f2;
-   background-image: url("https:source.unsplash.com/blue-bmw-car-in-a-dark-room-ffH_GkINfyY");
+  background-image: url("https:source.unsplash.com/blue-bmw-car-in-a-dark-room-ffH_GkINfyY");
 }
+
 .header-content {
   display: flex;
   background-color: #1f55eb;
   justify-content: space-between;
   vertical-align: center;
   text-align: center;
-  padding: 10px;
+  padding: 0px;
 }
 
 .header-content img {
-  margin-left: 30px; 
-  width: 40px; 
+  margin-left: 30px;
+  width: 40px;
   height: 40px;
 }
 
@@ -39,35 +41,38 @@ li {
   justify-content: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
+
 
 h1 {
   font-size: 32px;
   color: white;
   margin-bottom: 20px;
   text-align: center;
-  padding: 10px;
+  padding-left: 70px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+   
 }
 
 .interactive-cards {
+  box-sizing: border-box;
   background: #fff;
+  width: calc(33.33% - 20px); /* Adjust the width as needed */
+  margin: 10px;
+  padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  max-width: 400px;
-  flex: 1;
-  min-height: 200px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  border-radius: 8px;
+  
+  min-height: 50px;
+
+}
+
+.interactive-cards h2 {
+  margin-top: 0;
 }
 
 .interactive-cards:hover {
@@ -86,10 +91,17 @@ p {
   color: #444;
   margin-bottom: 20px;
 }
+.interactive-cards h2 {
+  margin-top: 0;
+}
 
 .btn-report,
 .btn-emergency,
+.btn-new,
+.btn-hos,
+.btn-crime,
 .btn-police {
+  display: block;
   font-size: 20px;
   color: #fff;
   background-color: #007bff;
@@ -100,10 +112,27 @@ p {
   cursor: pointer;
 }
 
-.btn-report:hover,
-.btn-emergency:hover,
-.btn-police:hover {
+
+btn-report:hover {
   background-color: #0056b3;
+}
+
+.btn-emergency:hover {
+  background-color: red;
+}
+
+.btn-police:hover,
+.btn-hos:hover,
+.btn-new:hover {
+  background-color: green;
+}
+
+.btn-emergency:hover {
+  background-color: #b30000;
+}
+
+.btn-police:hover {
+  background-color: #00b348;
 }
 
 img {
@@ -114,3 +143,4 @@ img {
   height: 32px;
   text-align: center;
 }
+

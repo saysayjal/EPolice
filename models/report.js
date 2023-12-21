@@ -7,7 +7,8 @@ const reportSchema = new mongoose.Schema({
     required: false,
     ref: "User",
   },
-  status: { type: String, enum: ['Pending', 'Approved','Handled','Rejected'], default: 'Pending' },
+  handled: { type: Boolean, required: true, default: false },
+  verified: { type: Boolean, required: true, default: false },
 });
 
 const Report = mongoose.model("Report", reportSchema);

@@ -1,4 +1,3 @@
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -7,27 +6,39 @@ table {
 }
 
 table th {
-    background-color: #007BFF; /* Header background color */
-    color: #fff; /* Header text color */
+    background-color: #007BFF;
+    /* Header background color */
+    color: #fff;
+    /* Header text color */
     font-weight: bold;
     padding: 10px;
     text-align: left;
 }
 
-table th, table td {
-    border: 1px solid #ccc; /* Border for table cells */
+table th,
+table td {
+    border: 1px solid #ccc;
+    /* Border for table cells */
     padding: 10px;
 }
 
 table td input[type="checkbox"] {
-    transform: scale(1.5); /* Increase checkbox size */
+    transform: scale(1.5);
+    /* Increase checkbox size */
     margin: 0;
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row background color */
+    background-color: #f2f2f2;
+    /* Alternate row background color */
 }
 
 table tr:hover {
-    background-color: #ddd; /* Hovered row background color */
+    background-color: #ddd;
+    /* Hovered row background color */
+}
+
+.status {
+    color: green;
+    font-size: 12px;
 }
