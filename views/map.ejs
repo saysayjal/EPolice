@@ -1,56 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-     <style>
-     #map { height: 450px; }
-     </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="stylesheets/map.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
+
 <body>
-    <h1>Nearby Police Station</h1>
-    
-    <div id="map"></div>
-</body>
-<script>
-   var map = L.map('map');
-   map.setView([51.505, -0.09], 13);
-   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-navigator.geolocation.watchPosition(success,error);
-let marker, circle,zoomed;
-function success(loc){
-const lat = loc.coords.latitude;
-const lng = loc.coords.longitude;
-const accuracy = loc.coords.accuracy;
-if(marker){
-    map.removeLayer(marker);
-    map.removeLayer(circle);
-}
- marker=L.marker([lat,lng]).addTo(map);
- circle =L.circle([lat,lng],{radius:accuracy}).addTo(map);
- if(!zoomed){
-    zoomed=map.fitBounds(circle.getBounds());
- }
-  map.setView([lat,lng],map.getZoom());
-marker.bindPopup(`You are here`).openPopup();
-}
-    function error(err){
-        if(err.code == 1){
-            alert("Please allow location access to use this feature");
+  <h2>Nearby Police Station</h2>
+  <div id="map" class="map"></div>
+  <script>
+    var map = L.map('map');
+    map.setView([28.3949, 84.1240], 7);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    const policeStations = [
+      { name: 'Nepal Police Headquarters', lat: 27.7169, lng: 85.3279 },
+      { name: 'District Traffic Police Office, Kaski', lat: 28.2089, lng: 83.9863 },
+      { name: 'District Police Office Kanchanpur', lat: 28.9670, lng: 80.1739 },
+      { name: 'District Police Office Morang', lat: 26.4746, lng: 87.2887 },
+      { name: 'District Police Office Bardiya', lat: 28.2033, lng: 81.3451 },
+      { name: 'Lumbini Province Traffic Police Office', lat: 27.7095, lng: 83.4648 },
+    ];
+
+    // Add markers for each police station
+    policeStations.forEach(station => {
+      L.marker([station.lat, station.lng])
+        .addTo(map)
+        .bindPopup(station.name);
+    });
+
+    navigator.geolocation.watchPosition(success, error);
+    let marker, circle, zoomed;
+
+    function success(loc) {
+      const lat = loc.coords.latitude;
+      const lng = loc.coords.longitude;
+      const accuracy = loc.coords.accuracy;
+      if (marker) {
+        map.removeLayer(marker);
+        map.removeLayer(circle);
+      }
+      marker = L.marker([lat, lng]).addTo(map);
+      circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+      if (!zoomed) {
+        zoomed = map.fitBounds(circle.getBounds());
+      }
+      map.setView([lat, lng], map.getZoom());
+      marker.bindPopup(`You are here`).openPopup();
     }
-        else{
-            alert("An error occurred: " + err.message);
-        }
-}
-</script>
+
+    function error(err) {
+      if (err.code == 1) {
+        alert("Please allow location access to use this feature");
+      } else {
+        alert("An error occurred: " + err.message);
+      }
+    }
+  </script>
+
+</body>
+
 </html>
