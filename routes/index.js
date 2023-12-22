@@ -41,6 +41,11 @@ router.get('/map', function(req, res, next) {
   res.render('map', { title: 'Express' });
 });
 
+
+router.get('/hospital', function(req, res, next) {
+  res.render('map1', { title: 'Express' });
+});
+
 //get user page
 router.get('/user', function(req, res, next) {
   res.render('user', { title: 'Express' });

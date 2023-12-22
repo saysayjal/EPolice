@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h2>Nearby Police Station</h2>
+  <h2>Nearby Hospital</h2>
   <div id="map" class="map"></div>
   <script>
     var map = L.map('map');
@@ -21,20 +21,23 @@
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    const policeStations = [
-      { name: 'Nepal Police Headquarters', lat: 27.7169, lng: 85.3279 },
-      { name: 'District Traffic Police Office, Kaski', lat: 28.2089, lng: 83.9863 },
-      { name: 'District Police Office Kanchanpur', lat: 28.9670, lng: 80.1739 },
-      { name: 'District Police Office Morang', lat: 26.4746, lng: 87.2887 },
-      { name: 'District Police Office Bardiya', lat: 28.2033, lng: 81.3451 },
-      { name: 'Lumbini Province Traffic Police Office', lat: 27.7095, lng: 83.4648 },
+    }).addTo(map1);
+    const hospital = [
+      { name: 'Bir hospital', lat: 27.7048, lng: 85.3137 },
+      { name: 'Teaching hospital', lat:27.7360, lng: 85.3303 },
+      { name: 'Mediciti Hospital', lat: 27.6623, lng: 85.3031 },
+      { name: 'B&B hospital', lat: 27.6649, lng: 85.3293 },
+      { name: 'Norvic hospital', lat: 27.6899, lng:85.3192 },
+      { name: 'Civil Hospital', lat: 27.6863, lng:85.3388 },
+      { name: 'Om hospital', lat: 27.7214, lng: 85.3448 },
+      { name: 'Grandi hospital', lat: 27.7529, lng: 85.3259 },
+      
     ];
 
     // Add markers for each police station
-    policeStations.forEach(station => {
+    hospital.forEach(station => {
       L.marker([station.lat, station.lng])
-        .addTo(map)
+        .addTo(map1)
         .bindPopup(station.name);
     });
 
