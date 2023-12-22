@@ -6,6 +6,7 @@ const Report = require('../models/report');
 
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Express' });
@@ -42,9 +43,7 @@ router.get('/map', function(req, res, next) {
 });
 
 
-router.get('/hospital', function(req, res, next) {
-  res.render('map1', { title: 'Express' });
-});
+
 
 //get user page
 router.get('/user', function(req, res, next) {
